@@ -5,7 +5,7 @@ so that one can view endpoints like `/wp-json/users/` directly from the browser 
 
 **The plugin requires PHP 5.4!**
 
-![admin-bar-samle](./admin-bar-sample.png)
+![admin-bar-sample](./admin-bar-sample.png)
 
 ## Why
 Developing with a REST API often needs you to visualize the data structure. I found the easiest way for me to do
