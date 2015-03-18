@@ -91,11 +91,11 @@ class WPScreenObject implements NodeInterface {
 		$path = '';
 		switch ( $this->screen->id ) {
 			case 'post' :
-				$post_ID = (int) $_GET[ 'post' ];
+				$post_ID = isset( $_GET[ 'post' ] ) ? (int) $_GET[ 'post' ] : '';
 				$path =  '/posts/' . $post_ID;
 				break;
 			case 'user-edit' :
-				$user_ID = (int) $_GET[ 'user_id' ];
+				$user_ID = isset( $_GET[ 'user_id' ] ) ? (int) $_GET[ 'user_id' ] : '';
 				$path =  '/posts/' . $user_ID;
 				break;
 			case 'profile' :
