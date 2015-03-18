@@ -31,7 +31,7 @@ class Terms implements NodeInterface {
 	private $URI_builder;
 
 	/**
-	 * @tyoe NodeInterface
+	 * @type NodeInterface
 	 */
 	private $parent;
 

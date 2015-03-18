@@ -21,7 +21,7 @@ class UsersMe implements NodeInterface {
 	private $URI_builder;
 
 	/**
-	 * @tyoe NodeInterface
+	 * @type NodeInterface
 	 */
 	private $parent;
 
