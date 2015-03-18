@@ -26,13 +26,18 @@ class RESTEndpointsToAdminBar {
 			$URI_builder
 		);
 
-		/* current screen */
-		$nodes[ 'current' ] = new AdminBarNode\WPScreenObject(
-			get_current_screen(),
-			$GLOBALS[ 'wp_admin_bar' ],
-			$URI_builder,
-			$nodes[ 'json' ]
-		);
+		if ( is_admin() ) {
+			/* current screen */
+			$screen = get_current_screen();
+			if ( is_a( $screen, '\WP_Screen' ) ) {
+				$nodes[ 'current' ] = new AdminBarNode\WPScreenObject(
+					$screen,
+					$GLOBALS[ 'wp_admin_bar' ],
+					$URI_builder,
+					$nodes[ 'json' ]
+				);
+			}
+		}
 
 		/* /wp-json/posts */
 		$nodes[ 'json/posts' ] = new AdminBarNode\Posts(
