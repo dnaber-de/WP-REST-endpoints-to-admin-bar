@@ -13,3 +13,7 @@ that directly in the browser using a JSON formatter like [JSONView (for Firefox)
 is no problem to queue for public data like `/wp-json/posts` or `/wp-json/taxonomies/category/terms` one need a
 valid nonce to avoid CSRF-attacks when queuing sensitive data like `/wp-json/users`. That is what the plugin does:
 it provide links with valid nonces as request parameter.
+
+## Known issues
+
+[./issues/2](#2), [./issues/1](#1)
