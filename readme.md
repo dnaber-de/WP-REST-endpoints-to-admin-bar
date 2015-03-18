@@ -16,4 +16,4 @@ it provide links with valid nonces as request parameter.
 
 ## Known issues
 
-[#2](./issues/2), [#1](./issues/1)
+[#2](issues/2), [#1](issues/1)
