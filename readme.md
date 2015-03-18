@@ -3,11 +3,11 @@
 A WordPress plugin which links all relevant [WP REST API](http://wp-api.org/) endpoints to the admin bar. It further generates valid nonces
 so that one can view endpoints like `/wp-json/users/` directly from the browser if you're logged in.
 
+![admin-bar-sample](./admin-bar-sample.png)
+
 ## Requirements
  * PHP 5.4
  * WordPress 4.*
-
-![admin-bar-sample](./admin-bar-sample.png)
 
 ## Why
 Developing with a REST API often needs you to visualize the data structure. I found the easiest way for me to do
