@@ -21,7 +21,7 @@ class RESTEndpointsToAdminBar {
 		$nodes = [];
 
 		/* /wp-json */
-		$nodes[ 'json' ] = new AdminBarNode\JSON(
+		$nodes[ 'json' ] = new AdminBarRESTNode\JSON(
 			$GLOBALS[ 'wp_admin_bar' ],
 			$URI_builder
 		);
@@ -30,7 +30,7 @@ class RESTEndpointsToAdminBar {
 			/* current screen */
 			$screen = get_current_screen();
 			if ( is_a( $screen, '\WP_Screen' ) ) {
-				$nodes[ 'current' ] = new AdminBarNode\WPScreenObject(
+				$nodes[ 'current' ] = new AdminBarRESTNode\WPScreenObject(
 					$screen,
 					$GLOBALS[ 'wp_admin_bar' ],
 					$URI_builder,
@@ -38,7 +38,7 @@ class RESTEndpointsToAdminBar {
 				);
 			}
 		} else {
-			$nodes[ 'current' ] = new AdminBarNode\QueriedObject(
+			$nodes[ 'current' ] = new AdminBarRESTNode\QueriedObject(
 				get_queried_object(),
 				$GLOBALS[ 'wp_admin_bar' ],
 				$URI_builder,
@@ -47,41 +47,41 @@ class RESTEndpointsToAdminBar {
 		}
 
 		/* /wp-json/posts */
-		$nodes[ 'json/posts' ] = new AdminBarNode\Posts(
+		$nodes[ 'json/posts' ] = new AdminBarRESTNode\Posts(
 			$GLOBALS[ 'wp_admin_bar' ],
 			$URI_builder,
 			$nodes[ 'json' ]
 		);
 
 		/* /wp-json/users */
-		$nodes[ 'json/users' ] = new AdminBarNode\Users(
+		$nodes[ 'json/users' ] = new AdminBarRESTNode\Users(
 			$GLOBALS[ 'wp_admin_bar' ],
 			$URI_builder,
 			$nodes[ 'json' ]
 		);
 
 		/* /wp-json/users/me */
-		$nodes[ 'json/users/me' ] = new AdminBarNode\UsersMe(
+		$nodes[ 'json/users/me' ] = new AdminBarRESTNode\UsersMe(
 			$GLOBALS[ 'wp_admin_bar' ],
 			$URI_builder,
 			$nodes[ 'json/users' ]
 		);
 
 		/* /wp-json/taxonomies */
-		$nodes[ 'json/taxonomies' ] = new AdminBarNode\Taxonomies(
+		$nodes[ 'json/taxonomies' ] = new AdminBarRESTNode\Taxonomies(
 			$GLOBALS[ 'wp_admin_bar' ],
 			$URI_builder,
 			$nodes[ 'json' ]
 		);
 
 		foreach ( get_taxonomies( [ 'public' => TRUE ] ) as $tax ) {
-			$nodes[ 'json/taxonomies/' . $tax ] = new AdminBarNode\SingleTaxonomy(
+			$nodes[ 'json/taxonomies/' . $tax ] = new AdminBarRESTNode\SingleTaxonomy(
 				$tax,
 				$GLOBALS[ 'wp_admin_bar' ],
 				$URI_builder,
 				$nodes[ 'json/taxonomies' ]
 			);
-			$nodes[ 'json/taxonomies/' . $tax . '/terms' ] = new AdminBarNode\Terms(
+			$nodes[ 'json/taxonomies/' . $tax . '/terms' ] = new AdminBarRESTNode\Terms(
 				$tax,
 				$GLOBALS[ 'wp_admin_bar' ],
 				$URI_builder,
