@@ -11,4 +11,5 @@ so that one can view endpoints like `/wp-json/users/` directly from the browser 
 Developing with a REST API often needs you to visualize the data structure. I found the easiest way for me to do
 that directly in the browser using a JSON formatter like [JSONView (for Firefox)](http://jsonview.com/). While it
 is no problem to queue for public data like `/wp-json/posts` or `/wp-json/taxonomies/category/terms` one need a
-valid nonce to avoid CSRF-attacks when queuing sensitive data like `/wp-json/users`.
+valid nonce to avoid CSRF-attacks when queuing sensitive data like `/wp-json/users`. That is what the plugin does:
+it provide links with valid nonces as request parameter.
