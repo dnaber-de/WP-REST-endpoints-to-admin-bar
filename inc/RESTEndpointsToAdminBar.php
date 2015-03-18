@@ -37,6 +37,13 @@ class RESTEndpointsToAdminBar {
 					$nodes[ 'json' ]
 				);
 			}
+		} else {
+			$nodes[ 'current' ] = new AdminBarNode\QueriedObject(
+				get_queried_object(),
+				$GLOBALS[ 'wp_admin_bar' ],
+				$URI_builder,
+				$nodes[ 'json' ]
+			);
 		}
 
 		/* /wp-json/posts */
