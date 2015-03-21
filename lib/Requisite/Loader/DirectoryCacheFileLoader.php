@@ -20,7 +20,7 @@ class DirectoryCacheFileLoader implements FileLoaderInterface {
 	private $extension;
 
 	/**
-	 * @tpye string
+	 * @type string
 	 */
 	private $base_dir;
 

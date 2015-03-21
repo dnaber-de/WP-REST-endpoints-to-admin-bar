@@ -1,7 +1,7 @@
 <?php # -*- coding: utf-8 -*-
 
 
-namespace RESTAdminBar\AdminBarNode;
+namespace RESTAdminBar\AdminBarRESTNode;
 
 
 interface NodeInterface {

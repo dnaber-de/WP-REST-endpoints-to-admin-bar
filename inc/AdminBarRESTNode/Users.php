@@ -1,14 +1,19 @@
 <?php # -*- coding: utf-8 -*-
 
-namespace RESTAdminBar\AdminBarNode;
+namespace RESTAdminBar\AdminBarRESTNode;
 use RESTAdminBar\Core;
 
-class JSON implements NodeInterface {
+class Users implements NodeInterface {
 
 	/**
 	 * @type string
 	 */
 	private $ID;
+
+	/**
+	 * @type int
+	 */
+	private $object_ID;
 
 	/**
 	 * @type \WP_Admin_Bar
@@ -21,7 +26,7 @@ class JSON implements NodeInterface {
 	private $URI_builder;
 
 	/**
-	 * @tyoe NodeInterface
+	 * @type NodeInterface
 	 */
 	private $parent;
 
@@ -29,17 +34,20 @@ class JSON implements NodeInterface {
 	 * @param \WP_Admin_Bar $admin_bar
 	 * @param Core\URIBuilderInterface $URI_builder
 	 * @param NodeInterface $parent
+	 * @param int $object_ID
 	 */
 	public function __construct(
 		\WP_Admin_Bar $admin_bar,
 		Core\URIBuilderInterface $URI_builder,
-		NodeInterface $parent = NULL
+		NodeInterface $parent = NULL,
+		$object_ID = 0
 	) {
 
-		$this->ID          = 'wp-json';
+		$this->ID          = 'wp-json-users';
 		$this->admin_bar   = $admin_bar;
 		$this->URI_builder = $URI_builder;
 		$this->parent      = $parent;
+		$this->object_ID   = (int) $object_ID;
 	}
 	/**
 	 * @return string
@@ -54,10 +62,14 @@ class JSON implements NodeInterface {
 	 */
 	public function register() {
 
+		$path = '/wp-json/users';
+		if ( $this->object_ID )
+			$path .= '/' . $this->object_ID;
+
 		$args = [
 			'id'    => $this->ID,
-			'title' => '/wp-json',
-			'href'  => $this->URI_builder->get_URI( '/wp-json' )
+			'title' => $path,
+			'href'  => $this->URI_builder->get_URI( $path )
 		];
 		if ( $this->parent )
 			$args[ 'parent' ] = $this->parent->get_ID();

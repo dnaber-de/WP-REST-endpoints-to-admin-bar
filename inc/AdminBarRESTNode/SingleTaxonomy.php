@@ -1,6 +1,6 @@
 <?php # -*- coding: utf-8 -*-
 
-namespace RESTAdminBar\AdminBarNode;
+namespace RESTAdminBar\AdminBarRESTNode;
 use RESTAdminBar\Core;
 
 class SingleTaxonomy implements NodeInterface {
@@ -26,7 +26,7 @@ class SingleTaxonomy implements NodeInterface {
 	private $URI_builder;
 
 	/**
-	 * @tyoe NodeInterface
+	 * @type NodeInterface
 	 */
 	private $parent;
 

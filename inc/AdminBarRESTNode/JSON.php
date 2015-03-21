@@ -1,9 +1,9 @@
 <?php # -*- coding: utf-8 -*-
 
-namespace RESTAdminBar\AdminBarNode;
+namespace RESTAdminBar\AdminBarRESTNode;
 use RESTAdminBar\Core;
 
-class UsersMe implements NodeInterface {
+class JSON implements NodeInterface {
 
 	/**
 	 * @type string
@@ -21,7 +21,7 @@ class UsersMe implements NodeInterface {
 	private $URI_builder;
 
 	/**
-	 * @tyoe NodeInterface
+	 * @type NodeInterface
 	 */
 	private $parent;
 
@@ -36,7 +36,7 @@ class UsersMe implements NodeInterface {
 		NodeInterface $parent = NULL
 	) {
 
-		$this->ID          = 'wp-json-users-me';
+		$this->ID          = 'wp-json';
 		$this->admin_bar   = $admin_bar;
 		$this->URI_builder = $URI_builder;
 		$this->parent      = $parent;
@@ -56,8 +56,8 @@ class UsersMe implements NodeInterface {
 
 		$args = [
 			'id'    => $this->ID,
-			'title' => '/wp-json/users/me',
-			'href'  => $this->URI_builder->get_URI( '/wp-json/users/me' )
+			'title' => '/wp-json',
+			'href'  => $this->URI_builder->get_URI( '/wp-json' )
 		];
 		if ( $this->parent )
 			$args[ 'parent' ] = $this->parent->get_ID();
