@@ -1,13 +1,14 @@
 <?php # -*- coding: utf-8 -*-
 
 /**
- * Plugin Name: WP REST API endpoints to admin bar
- * Description: Places Links to the WP API endpoints in the admin bar. <strong>Requires PHP 5.4!</strong>
- * Version:     2015-03-18
- * Plugin URI:  https://github.com/dnaber-de/WP-REST-endpoints-to-admin-bar
- * Author:      David Naber
- * Author URI:  https://dnaber.de
- * Licence:     MIT
+ * Plugin Name:  WP REST API endpoints to admin bar
+ * Description:  Places Links to the WP API endpoints in the admin bar. <strong>Requires PHP 5.4!</strong>
+ * Version:      2015.03.21
+ * Plugin URI:   https://github.com/dnaber-de/WP-REST-endpoints-to-admin-bar
+ * Author:       David Naber
+ * Author URI:   https://dnaber.de
+ * Contributors: Frank Bültge
+ * Licence:      MIT
  */
 
 namespace RESTAdminBar;

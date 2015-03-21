@@ -16,6 +16,10 @@ is no problem to queue for public data like `/wp-json/posts` or `/wp-json/taxono
 valid nonce to avoid CSRF-attacks when queuing sensitive data like `/wp-json/users`. That is what the plugin does:
 it provide links with valid nonces as request parameter.
 
+## Contributors
+
+Thanks to [Frank Bültge](//github.com/bueltge)
+
 ## Known issues
 
-[#3](../../issues/3), [#2](../../issues/2), <del>[#1](../../issues/1)</del>
+[#3](../../issues/3), [#2](../../issues/2)
