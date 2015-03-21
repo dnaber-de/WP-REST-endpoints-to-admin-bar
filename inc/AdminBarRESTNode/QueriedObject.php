@@ -1,6 +1,6 @@
 <?php # -*- coding: utf-8 -*-
 
-namespace RESTAdminBar\AdminBarNode;
+namespace RESTAdminBar\AdminBarRESTNode;
 use RESTAdminBar\Core;
 
 class QueriedObject implements NodeInterface {
@@ -31,7 +31,7 @@ class QueriedObject implements NodeInterface {
 	private $URI_builder;
 
 	/**
-	 * @tyoe NodeInterface
+	 * @type NodeInterface
 	 */
 	private $parent;
 
