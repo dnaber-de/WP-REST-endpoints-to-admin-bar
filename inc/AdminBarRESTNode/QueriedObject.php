@@ -87,7 +87,7 @@ class QueriedObject implements NodeInterface {
 	 * @return string
 	 */
 	private function get_path_for_object() {
-		var_dump( $this->queried_object );
+		
 		$path = '';
 		if ( is_a( $this->queried_object, '\WP_Post' ) ) {
 			$path = '/posts/' . (int) $this->queried_object->ID;
