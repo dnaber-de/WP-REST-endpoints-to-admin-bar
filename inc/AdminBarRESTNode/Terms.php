@@ -76,7 +76,7 @@ class Terms implements NodeInterface {
 		$path = '/wp-json/wp/v2/taxonomies/' . $this->taxonomy . '/terms';
 		if ( $this->object_ID )
 			$path .= '/' . $this->object_ID;
-var_dump($this->object_ID);
+
 		$args = [
 			'id'    => $this->ID,
 			'title' => $path,
