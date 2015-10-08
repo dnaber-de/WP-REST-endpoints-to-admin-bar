@@ -16,6 +16,11 @@ class Terms implements NodeInterface {
 	private $object_ID;
 
 	/**
+	 * @var string
+	 */
+	private $api_path;
+
+	/**
 	 * @type string
 	 */
 	private $taxonomy;
@@ -36,13 +41,15 @@ class Terms implements NodeInterface {
 	private $parent;
 
 	/**
-	 * @param string $taxonomy
-	 * @param \WP_Admin_Bar $admin_bar
+	 * @param                          $api_path
+	 * @param string                   $taxonomy
+	 * @param \WP_Admin_Bar            $admin_bar
 	 * @param Core\URIBuilderInterface $URI_builder
-	 * @param NodeInterface $parent
-	 * @param int $object_ID
+	 * @param NodeInterface            $parent
+	 * @param int                      $object_ID
 	 */
 	public function __construct(
+		$api_path,
 		$taxonomy,
 		\WP_Admin_Bar $admin_bar,
 		Core\URIBuilderInterface $URI_builder,
@@ -52,6 +59,7 @@ class Terms implements NodeInterface {
 
 		$this->taxonomy    = (string) $taxonomy;
 		$this->ID          = 'wp-json-taxonomies-' . $this->taxonomy . '-terms';
+		$this->api_path    = $api_path;
 		$this->admin_bar   = $admin_bar;
 		$this->URI_builder = $URI_builder;
 		$this->parent      = $parent;
@@ -73,7 +81,7 @@ class Terms implements NodeInterface {
 		if ( ! taxonomy_exists( $this->taxonomy ) )
 			return;
 
-		$path = '/wp-json/wp/v2/taxonomies/' . $this->taxonomy . '/terms';
+		$path = $this->api_path . 'taxonomies/' . $this->taxonomy . '/terms';
 		if ( $this->object_ID )
 			$path .= '/' . $this->object_ID;
 

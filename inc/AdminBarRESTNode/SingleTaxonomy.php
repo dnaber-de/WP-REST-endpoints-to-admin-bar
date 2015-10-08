@@ -16,6 +16,11 @@ class SingleTaxonomy implements NodeInterface {
 	private $taxonomy;
 
 	/**
+	 * @var string
+	 */
+	private $api_path;
+
+	/**
 	 * @type \WP_Admin_Bar
 	 */
 	private $admin_bar;
@@ -31,12 +36,14 @@ class SingleTaxonomy implements NodeInterface {
 	private $parent;
 
 	/**
-	 * @param string $taxonomy
-	 * @param \WP_Admin_Bar $admin_bar
+	 * @param                          $api_path
+	 * @param string                   $taxonomy
+	 * @param \WP_Admin_Bar            $admin_bar
 	 * @param Core\URIBuilderInterface $URI_builder
-	 * @param NodeInterface $parent
+	 * @param NodeInterface            $parent
 	 */
 	public function __construct(
+		$api_path,
 		$taxonomy,
 		\WP_Admin_Bar $admin_bar,
 		Core\URIBuilderInterface $URI_builder,
@@ -45,6 +52,7 @@ class SingleTaxonomy implements NodeInterface {
 
 		$this->taxonomy    = (string) $taxonomy;
 		$this->ID          = 'wp-json-taxonomies-' . $this->taxonomy;
+		$this->api_path    = $api_path;
 		$this->admin_bar   = $admin_bar;
 		$this->URI_builder = $URI_builder;
 		$this->parent      = $parent;
@@ -67,8 +75,8 @@ class SingleTaxonomy implements NodeInterface {
 
 		$args = [
 			'id'    => $this->ID,
-			'title' => '/wp-json/wp/v2/taxonomies/' . $this->taxonomy,
-			'href'  => $this->URI_builder->get_URI( '/wp-json/wp/v2/taxonomies/' . $this->taxonomy )
+			'title' => $this->api_path . 'taxonomies/' . $this->taxonomy,
+			'href'  => $this->URI_builder->get_URI( $this->api_path . 'taxonomies/' . $this->taxonomy )
 		];
 		if ( $this->parent )
 			$args[ 'parent' ] = $this->parent->get_ID();
