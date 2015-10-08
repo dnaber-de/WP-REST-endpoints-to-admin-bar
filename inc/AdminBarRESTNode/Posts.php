@@ -16,6 +16,11 @@ class Posts implements NodeInterface {
 	private $object_ID;
 
 	/**
+	 * @var string
+	 */
+	private $api_path;
+
+	/**
 	 * @type \WP_Admin_Bar
 	 */
 	private $admin_bar;
@@ -31,18 +36,21 @@ class Posts implements NodeInterface {
 	private $parent;
 
 	/**
-	 * @param \WP_Admin_Bar $admin_bar
+	 * @param                          $api_path
+	 * @param \WP_Admin_Bar            $admin_bar
 	 * @param Core\URIBuilderInterface $URI_builder
-	 * @param NodeInterface $parent
-	 * @param int $object_ID
+	 * @param NodeInterface            $parent
+	 * @param int                      $object_ID
 	 */
 	public function __construct(
+		$api_path,
 		\WP_Admin_Bar $admin_bar,
 		Core\URIBuilderInterface $URI_builder,
 		NodeInterface $parent = NULL,
 		$object_ID = 0
 	) {
 		$this->ID          = 'wp-json-posts';
+		$this->api_path    = $api_path;
 		$this->admin_bar   = $admin_bar;
 		$this->URI_builder = $URI_builder;
 		$this->parent      = $parent;
@@ -61,7 +69,7 @@ class Posts implements NodeInterface {
 	 */
 	public function register() {
 
-		$path = '/wp-json/posts';
+		$path = $this->api_path . 'posts';
 		if ( $this->object_ID )
 			$path .= '/' . $this->object_ID;
 
@@ -76,4 +84,4 @@ class Posts implements NodeInterface {
 		$this->admin_bar->add_node( $args );
 	}
 
-} 
+}
