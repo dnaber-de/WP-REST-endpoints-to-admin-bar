@@ -62,7 +62,7 @@ class Users implements NodeInterface {
 	 */
 	public function register() {
 
-		$path = '/wp-json/users';
+		$path = '/wp-json/wp/v2/users';
 		if ( $this->object_ID )
 			$path .= '/' . $this->object_ID;
 
@@ -77,4 +77,4 @@ class Users implements NodeInterface {
 		$this->admin_bar->add_node( $args );
 	}
 
-} 
+}

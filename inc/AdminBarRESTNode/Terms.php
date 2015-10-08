@@ -73,10 +73,10 @@ class Terms implements NodeInterface {
 		if ( ! taxonomy_exists( $this->taxonomy ) )
 			return;
 
-		$path = '/wp-json/taxonomies/' . $this->taxonomy . '/terms';
+		$path = '/wp-json/wp/v2/taxonomies/' . $this->taxonomy . '/terms';
 		if ( $this->object_ID )
 			$path .= '/' . $this->object_ID;
-
+var_dump($this->object_ID);
 		$args = [
 			'id'    => $this->ID,
 			'title' => $path,
@@ -87,4 +87,4 @@ class Terms implements NodeInterface {
 
 		$this->admin_bar->add_node( $args );
 	}
-} 
+}

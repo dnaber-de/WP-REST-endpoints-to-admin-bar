@@ -61,7 +61,7 @@ class Posts implements NodeInterface {
 	 */
 	public function register() {
 
-		$path = '/wp-json/posts';
+		$path = '/wp-json/wp/v2/posts';
 		if ( $this->object_ID )
 			$path .= '/' . $this->object_ID;
 
@@ -76,4 +76,4 @@ class Posts implements NodeInterface {
 		$this->admin_bar->add_node( $args );
 	}
 
-} 
+}

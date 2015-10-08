@@ -56,8 +56,8 @@ class UsersMe implements NodeInterface {
 
 		$args = [
 			'id'    => $this->ID,
-			'title' => '/wp-json/users/me',
-			'href'  => $this->URI_builder->get_URI( '/wp-json/users/me' )
+			'title' => '/wp-json/wp/v2/users/me',
+			'href'  => $this->URI_builder->get_URI( '/wp-json/wp/v2/users/me' )
 		];
 		if ( $this->parent )
 			$args[ 'parent' ] = $this->parent->get_ID();
@@ -65,4 +65,4 @@ class UsersMe implements NodeInterface {
 		$this->admin_bar->add_node( $args );
 	}
 
-} 
+}

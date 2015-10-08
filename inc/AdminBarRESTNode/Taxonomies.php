@@ -56,8 +56,8 @@ class Taxonomies implements NodeInterface {
 
 		$args = [
 			'id'    => $this->ID,
-			'title' => '/wp-json/taxonomies',
-			'href'  => $this->URI_builder->get_URI( '/wp-json/taxonomies' )
+			'title' => '/wp-json/wp/v2/taxonomies',
+			'href'  => $this->URI_builder->get_URI( '/wp-json/wp/v2/taxonomies' )
 		];
 		if ( $this->parent )
 			$args[ 'parent' ] = $this->parent->get_ID();
@@ -65,4 +65,4 @@ class Taxonomies implements NodeInterface {
 		$this->admin_bar->add_node( $args );
 	}
 
-} 
+}

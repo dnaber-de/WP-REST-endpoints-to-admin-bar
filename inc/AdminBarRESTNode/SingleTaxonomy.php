@@ -67,8 +67,8 @@ class SingleTaxonomy implements NodeInterface {
 
 		$args = [
 			'id'    => $this->ID,
-			'title' => '/wp-json/taxonomies/' . $this->taxonomy,
-			'href'  => $this->URI_builder->get_URI( '/wp-json/taxonomies/' . $this->taxonomy )
+			'title' => '/wp-json/wp/v2/taxonomies/' . $this->taxonomy,
+			'href'  => $this->URI_builder->get_URI( '/wp-json/wp/v2/taxonomies/' . $this->taxonomy )
 		];
 		if ( $this->parent )
 			$args[ 'parent' ] = $this->parent->get_ID();
@@ -76,4 +76,4 @@ class SingleTaxonomy implements NodeInterface {
 		$this->admin_bar->add_node( $args );
 	}
 
-} 
+}
