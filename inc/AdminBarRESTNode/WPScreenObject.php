@@ -11,6 +11,11 @@ class WPScreenObject implements NodeInterface {
 	private $ID;
 
 	/**
+	 * @var string
+	 */
+	private $api_path;
+
+	/**
 	 * @type \WP_Screen
 	 */
 	private $screen;
@@ -36,12 +41,14 @@ class WPScreenObject implements NodeInterface {
 	private $parent;
 
 	/**
-	 * @param \WP_Screen $screen
-	 * @param \WP_Admin_Bar $admin_bar
+	 * @param                          $api_path
+	 * @param \WP_Screen               $screen
+	 * @param \WP_Admin_Bar            $admin_bar
 	 * @param Core\URIBuilderInterface $URI_builder
-	 * @param NodeInterface $parent
+	 * @param NodeInterface            $parent
 	 */
 	public function __construct(
+		$api_path,
 		\WP_Screen $screen,
 		\WP_Admin_Bar $admin_bar,
 		Core\URIBuilderInterface $URI_builder,
@@ -50,6 +57,7 @@ class WPScreenObject implements NodeInterface {
 
 		$this->screen      = $screen;
 		$this->ID          = 'wp-json-current';
+		$this->api_path    = $api_path;
 		$this->admin_bar   = $admin_bar;
 		$this->URI_builder = $URI_builder;
 		$this->parent      = $parent;
@@ -118,4 +126,4 @@ class WPScreenObject implements NodeInterface {
 
 		return $path;
 	}
-} 
+}

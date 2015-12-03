@@ -16,6 +16,11 @@ class QueriedObject implements NodeInterface {
 	private $queried_object;
 
 	/**
+	 * @var string
+	 */
+	private $api_path;
+
+	/**
 	 * @type string
 	 */
 	private $taxonomy;
@@ -36,12 +41,14 @@ class QueriedObject implements NodeInterface {
 	private $parent;
 
 	/**
-	 * @param mixed $queried_object
-	 * @param \WP_Admin_Bar $admin_bar
+	 * @param                          $api_path
+	 * @param mixed                    $queried_object
+	 * @param \WP_Admin_Bar            $admin_bar
 	 * @param Core\URIBuilderInterface $URI_builder
-	 * @param NodeInterface $parent
+	 * @param NodeInterface            $parent
 	 */
 	public function __construct(
+		$api_path,
 		$queried_object,
 		\WP_Admin_Bar $admin_bar,
 		Core\URIBuilderInterface $URI_builder,
@@ -50,6 +57,7 @@ class QueriedObject implements NodeInterface {
 
 		$this->queried_object = $queried_object;
 		$this->ID             = 'wp-json-current';
+		$this->api_path       = $api_path;
 		$this->admin_bar      = $admin_bar;
 		$this->URI_builder    = $URI_builder;
 		$this->parent         = $parent;
@@ -71,7 +79,7 @@ class QueriedObject implements NodeInterface {
 		if ( empty( $path ) )
 			return;
 
-		$path = '/wp-json' . $path;
+		$path = $this->api_path . $path;
 		$args = [
 			'id'    => $this->ID,
 			'title' => $path,
@@ -87,10 +95,10 @@ class QueriedObject implements NodeInterface {
 	 * @return string
 	 */
 	private function get_path_for_object() {
-		var_dump( $this->queried_object );
+
 		$path = '';
 		if ( is_a( $this->queried_object, '\WP_Post' ) ) {
-			$path = '/posts/' . (int) $this->queried_object->ID;
+			$path = 'posts/' . (int) $this->queried_object->ID;
 		}
 
 		if ( is_a( $this->queried_object, '\stdClass' ) ) {
