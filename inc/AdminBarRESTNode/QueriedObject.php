@@ -98,7 +98,7 @@ class QueriedObject implements NodeInterface {
 
 		$path = '';
 		if ( is_a( $this->queried_object, '\WP_Post' ) ) {
-			$path = '/posts/' . (int) $this->queried_object->ID;
+			$path = 'posts/' . (int) $this->queried_object->ID;
 		}
 
 		if ( is_a( $this->queried_object, '\stdClass' ) ) {
