@@ -14,7 +14,7 @@ class RESTEndpointsToAdminBar {
 	 */
 	public function run() {
 
-		$this->set_path_to_api_version();
+		$this->get_rest_url();
 
 		add_action( 'wp_before_admin_bar_render', [ $this, 'updade_admin_bar' ] );
 	}
@@ -22,15 +22,9 @@ class RESTEndpointsToAdminBar {
 	/**
 	 * Set the api path, in dependence from the API version.
 	 */
-	private function set_path_to_api_version() {
-		// Set the path base of the Json Api.
-		// V2 use a new constant for his version number :(.
-		if ( defined( 'REST_API_VERSION' ) ) {
-			$this->api_path = '/wp-json/wp/v2/';
-		} else {
-			// Version 1 as fallback.
-			$this->api_path = '/wp-json/';
-		}
+	private function get_rest_url() {
+
+		$this->api_path = get_rest_url() . 'wp/v2/';
 	}
 
 	/**
@@ -43,6 +37,7 @@ class RESTEndpointsToAdminBar {
 
 		/* /wp-json */
 		$nodes[ 'json' ] = new AdminBarRESTNode\JSON(
+			$this->api_path,
 			$GLOBALS[ 'wp_admin_bar' ],
 			$URI_builder
 		);
@@ -50,7 +45,7 @@ class RESTEndpointsToAdminBar {
 		if ( is_admin() ) {
 			/* current screen */
 			$screen = get_current_screen();
-			if ( is_a( $screen, '\WP_Screen' ) ) {
+			if ( is_a( $screen, \WP_Screen::class ) ) {
 				$nodes[ 'current' ] = new AdminBarRESTNode\WPScreenObject(
 					$this->api_path,
 					$screen,
