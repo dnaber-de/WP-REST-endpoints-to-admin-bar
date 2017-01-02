@@ -20,11 +20,15 @@ class RESTEndpointsToAdminBar {
 	}
 
 	/**
-	 * Set the api path, in dependence from the API version.
+	 * Set the api path, include the core namespace.
+	 * Return the URL to a REST endpoint on a site.
+	 *
+	 * @return string Path of REST API.
 	 */
 	private function get_rest_url() {
 
 		$this->api_path = get_rest_url() . 'wp/v2/';
+		return get_rest_url();
 	}
 
 	/**
@@ -37,7 +41,7 @@ class RESTEndpointsToAdminBar {
 
 		/* /wp-json */
 		$nodes[ 'json' ] = new AdminBarRESTNode\JSON(
-			$this->api_path,
+			$this->get_rest_url(),
 			$GLOBALS[ 'wp_admin_bar' ],
 			$URI_builder
 		);
