@@ -16,7 +16,7 @@ class RESTEndpointsToAdminBar {
 
 		$this->get_rest_url();
 
-		add_action( 'wp_before_admin_bar_render', [ $this, 'updade_admin_bar' ] );
+		add_action( 'wp_before_admin_bar_render', [ $this, 'update_admin_bar' ] );
 	}
 
 	/**
@@ -34,7 +34,7 @@ class RESTEndpointsToAdminBar {
 	/**
 	 * @wp-hook wp_before_admin_bar_render
 	 */
-	public function updade_admin_bar() {
+	public function update_admin_bar() {
 
 		$URI_builder = new Core\JSONNonceURIBuilder( 'wp_json' );
 		$nodes = [];
