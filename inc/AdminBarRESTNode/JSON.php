@@ -11,6 +11,11 @@ class JSON implements NodeInterface {
 	private $ID;
 
 	/**
+	 * @var string
+	 */
+	private $api_path;
+
+	/**
 	 * @type \WP_Admin_Bar
 	 */
 	private $admin_bar;
@@ -26,17 +31,20 @@ class JSON implements NodeInterface {
 	private $parent;
 
 	/**
-	 * @param \WP_Admin_Bar $admin_bar
+	 * @param                          $api_path
+	 * @param \WP_Admin_Bar            $admin_bar
 	 * @param Core\URIBuilderInterface $URI_builder
-	 * @param NodeInterface $parent
+	 * @param NodeInterface            $parent
 	 */
 	public function __construct(
+		$api_path,
 		\WP_Admin_Bar $admin_bar,
 		Core\URIBuilderInterface $URI_builder,
 		NodeInterface $parent = NULL
 	) {
 
 		$this->ID          = 'wp-json';
+		$this->api_path    = $api_path;
 		$this->admin_bar   = $admin_bar;
 		$this->URI_builder = $URI_builder;
 		$this->parent      = $parent;
@@ -57,7 +65,7 @@ class JSON implements NodeInterface {
 		$args = [
 			'id'    => $this->ID,
 			'title' => '/wp-json',
-			'href'  => $this->URI_builder->get_URI( '/wp-json' )
+			'href'  => $this->URI_builder->get_URI( $this->api_path )
 		];
 		if ( $this->parent )
 			$args[ 'parent' ] = $this->parent->get_ID();

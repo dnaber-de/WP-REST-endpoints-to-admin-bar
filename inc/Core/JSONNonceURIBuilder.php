@@ -24,9 +24,8 @@ class JSONNonceURIBuilder implements URIBuilderInterface {
 	 */
 	public function get_URI( $path = '' ) {
 
-		$URI = home_url( $path );
 		$nonce = wp_create_nonce( $this->action );
 
-		return add_query_arg( '_wp_json_nonce', $nonce, $URI );
+		return add_query_arg( '_wp_json_nonce', $nonce, $path );
 	}
 }
